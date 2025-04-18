@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -239,19 +239,19 @@
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="read range from input.xlsx." DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="659.2,4432.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="read range from input.xlsx." DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="987.2,4452.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Movie" />
-      <Variable x:TypeArguments="x:String" Name="baseEndpoint">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">http://localhost:8080/</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="http://localhost:8080/" Name="baseEndpoint" />
       <Variable x:TypeArguments="x:String" Name="User_choice" />
       <Variable x:TypeArguments="x:String" Name="EndPoint" />
-      <Variable x:TypeArguments="x:String" Name="Payload" />
       <Variable x:TypeArguments="x:String" Name="API_Response" />
       <Variable x:TypeArguments="x:Int32" Name="API_Response_Status" />
+      <Variable x:TypeArguments="x:String" Name="Body" />
+      <Variable x:TypeArguments="x:String" Name="CastID" />
+      <Variable x:TypeArguments="x:String" Name="genres" />
+      <Variable x:TypeArguments="x:String" Name="plot" />
+      <Variable x:TypeArguments="x:String" Name="name" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -264,27 +264,28 @@
         <OutArgument x:TypeArguments="x:String">[User_choice]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch Workflow for Movies Microservices operations" Expression="[User_choice]" sap:VirtualizedContainerService.HintSize="584,4051.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:String" DisplayName="Switch Workflow for Movies Microservices operations" Expression="[User_choice]" sap:VirtualizedContainerService.HintSize="584,4071.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
-        <Sequence sap2010:Annotation.AnnotationText="create switch conditions for these {&quot;Create&quot;,&quot;Read&quot;,&quot;Update&quot;,&quot;Delete&quot;}" DisplayName="Default" sap:VirtualizedContainerService.HintSize="582.4,3881.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap2010:Annotation.AnnotationText="create switch conditions for these {&quot;Create&quot;,&quot;Read&quot;,&quot;Update&quot;,&quot;Delete&quot;}" DisplayName="Default" sap:VirtualizedContainerService.HintSize="582.4,3901.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Switch x:TypeArguments="x:String" DisplayName="Create a switch statement" Expression="[User_choice]" sap:VirtualizedContainerService.HintSize="548.8,3790.4" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+          <Switch x:TypeArguments="x:String" DisplayName="Create a switch statement" Expression="[User_choice]" sap:VirtualizedContainerService.HintSize="548.8,3810.4" sap2010:WorkflowViewState.IdRef="Switch`1_2">
             <Switch.Default>
-              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="547.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="547.2,24.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log &quot;Unknown operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Unknown operation&quot;]" />
+                <ui:LogMessage DisplayName="Log &quot;Unknown operation&quot;" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Unknown operation&quot;]" />
               </Sequence>
             </Switch.Default>
-            <Sequence x:Key="Create" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,1736" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence x:Key="Create" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,1325.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -293,23 +294,13 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log &quot;Create operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Create operation&quot;]" />
               <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_Movie]" DisplayName="Read range from input.xlsx" sap:VirtualizedContainerService.HintSize="513.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Movies" WorkbookPath="input.xlsx" />
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Movie]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="513.6,1381.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Movie]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="513.6,971.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,1208.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                      <Sequence.Variables>
-                        <Variable x:TypeArguments="x:String" Name="Post" />
-                        <Variable x:TypeArguments="x:String" Name="raw_Post" />
-                        <Variable x:TypeArguments="x:String" Name="CastID" />
-                        <Variable x:TypeArguments="x:String" Name="genres" />
-                        <Variable x:TypeArguments="x:String" Name="plot" />
-                        <Variable x:TypeArguments="x:String" Name="name" />
-                        <Variable x:TypeArguments="njl:JObject" Name="OutResultJson" />
-                        <Variable x:TypeArguments="x:String" Name="PostJason" />
-                      </Sequence.Variables>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,798.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -363,23 +354,13 @@
                       </ui:MultipleAssign>
                       <Assign DisplayName="Format Movie Details into Post Variable" sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
                         <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[Post]</OutArgument>
+                          <OutArgument x:TypeArguments="x:String">[Body]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
                           <InArgument x:TypeArguments="x:String">["{""name"": """+name+""",""plot"": """+plot+""",""genres"": ["""+genres+"""],""casts_id"": ["""+CastID+"""]}"]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[Post]" />
-                      <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="478.4,122.4" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[OutResultJson]" JsonString="[Post]" />
-                      <Assign sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[PostJason]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[Newtonsoft.Json.JsonConvert.SerializeObject( OutResultJson)]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/json" DisplayName="Movies Microservices API Request" EnableSSLVerification="False" EndPoint="http://localhost:8080/api/v1/movies/" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="6000">
+                      <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[Body]" BodyFormat="application/json" DisplayName="Movies Microservices API Request" EnableSSLVerification="False" EndPoint="http://localhost:8080/api/v1/movies/" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="POST" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="6000">
                         <ui:HttpClient.Attachments>
                           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                         </ui:HttpClient.Attachments>
@@ -391,18 +372,7 @@
                           <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
                         </ui:HttpClient.Headers>
                         <ui:HttpClient.Parameters>
-                          <InArgument x:TypeArguments="x:String" x:Key="name">
-                            <Literal x:TypeArguments="x:String">test</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="plot">
-                            <Literal x:TypeArguments="x:String">test</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="genres">
-                            <Literal x:TypeArguments="x:String">test</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="casts_id">
-                            <Literal x:TypeArguments="x:String">120</Literal>
-                          </InArgument>
+                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                         </ui:HttpClient.Parameters>
                         <ui:HttpClient.UrlSegments>
                           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
@@ -414,33 +384,110 @@
                 </ui:ForEachRow.Body>
               </ui:ForEachRow>
             </Sequence>
-            <Sequence x:Key="Read" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,500.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence x:Key="Read" DisplayName="Body" sap:VirtualizedContainerService.HintSize="467.2,616.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="513.6,275.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_1" />
-                  </Sequence>
-                </ui:CommentOut.Body>
-              </ui:CommentOut>
-              <ui:LogMessage DisplayName="Log &quot;Read operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Read operation&quot;]" />
+              <ui:LogMessage DisplayName="Log &quot;Read operation&quot;" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Read operation&quot;]" />
+              <Assign DisplayName="Assign Movie API Endpoint" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[EndPoint]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[baseEndpoint+"/api/v1/movies"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request to API Endpoint" EnableSSLVerification="True" EndPoint="[EndPoint]" sap:VirtualizedContainerService.HintSize="433.6,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="GET" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="6000">
+                <ui:HttpClient.Attachments>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Attachments>
+                <ui:HttpClient.Cookies>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Cookies>
+                <ui:HttpClient.Headers>
+                  <InArgument x:TypeArguments="x:String" x:Key="accept">application/json</InArgument>
+                </ui:HttpClient.Headers>
+                <ui:HttpClient.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Parameters>
+                <ui:HttpClient.UrlSegments>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.UrlSegments>
+              </ui:HttpClient>
+              <ui:LogMessage DisplayName="Log movies API response message" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Movies: &quot;+ Environment.NewLine+API_Response]" />
             </Sequence>
-            <Sequence x:Key="Update" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence x:Key="Update" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,2098.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="ID" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log &quot;Update operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Update operation&quot;]" />
+              <ui:LogMessage DisplayName="Log &quot;Update operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Update operation&quot;]" />
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog for Movie ID Entry" sap:VirtualizedContainerService.HintSize="513.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Movie ID" Title="Enter Movie ID">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">[ID]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input dialog for entering name" sap:VirtualizedContainerService.HintSize="513.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_6" IsPassword="False" Label="Name" Title="Enter New Details">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog for Movie Plot Entry" sap:VirtualizedContainerService.HintSize="513.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Plot" Title="Enter New Details">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">[plot]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input dialog for movie genres" sap:VirtualizedContainerService.HintSize="513.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Genres" Title="Enter New Details">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">[genres]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Collect Cast ID through input dialog" sap:VirtualizedContainerService.HintSize="513.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_5" IsPassword="False" Label="Cast ID" Title="Enter New Details">
+                <ui:InputDialog.Result>
+                  <OutArgument x:TypeArguments="x:String">[CastID]</OutArgument>
+                </ui:InputDialog.Result>
+              </ui:InputDialog>
+              <Assign sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[Body]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["{""name"": """+name+""",""plot"": """+plot+""",""genres"": ["""+genres+"""],""casts_id"": [    """+CastID+""" ]}"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[EndPoint]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[baseEndpoint+"/api/v1/movies/"+ID]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[Body]" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[EndPoint]" sap:VirtualizedContainerService.HintSize="513.6,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_5" Method="PUT" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="10000">
+                <ui:HttpClient.Attachments>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Attachments>
+                <ui:HttpClient.Cookies>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Cookies>
+                <ui:HttpClient.Headers>
+                  <InArgument x:TypeArguments="x:String" x:Key="accept">application/json</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
+                </ui:HttpClient.Headers>
+                <ui:HttpClient.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.Parameters>
+                <ui:HttpClient.UrlSegments>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </ui:HttpClient.UrlSegments>
+              </ui:HttpClient>
+              <ui:LogMessage DisplayName="Log modified API response message" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Modified&quot;+Environment.NewLine+API_Response]" />
             </Sequence>
             <Sequence x:Key="Delete" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
@@ -450,13 +497,14 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log &quot;Delete operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Delete operation&quot;]" />
             </Sequence>
-            <Sequence x:Key="Count" DisplayName="Body" sap:VirtualizedContainerService.HintSize="547.2,515.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence x:Key="Count" DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,68.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="513.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[EndPoint]</OutArgument>
                 </Assign.To>
@@ -464,7 +512,7 @@
                   <InArgument x:TypeArguments="x:String">[baseEndpoint+"api/v1/movies/count"]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="HTTPRequest - Invoke Workflow File (HTTPRequest.xaml)" sap:VirtualizedContainerService.HintSize="513.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="HTTPRequest.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="HTTPRequest - Invoke Workflow File (HTTPRequest.xaml)" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="HTTPRequest.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="EndPoint">[EndPoint]</InArgument>
                   <OutArgument x:TypeArguments="x:String" x:Key="API_Response">[API_Response]</OutArgument>
@@ -472,7 +520,7 @@
                   <InArgument x:TypeArguments="x:String" x:Key="Payload" />
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
-              <ui:LogMessage DisplayName="Log message for count operation" sap:VirtualizedContainerService.HintSize="513.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Count operation&quot;+Environment.NewLine+&quot;Total Movies in the DB: &quot;+API_Response]" />
+              <ui:LogMessage DisplayName="Log message for count operation" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Count operation&quot;+Environment.NewLine+&quot;Total Movies in the DB: &quot;+API_Response]" />
             </Sequence>
           </Switch>
         </Sequence>

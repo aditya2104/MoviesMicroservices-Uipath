@@ -94,13 +94,13 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="addCast" sap:VirtualizedContainerService.HintSize="987.2,1196" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="addCast" sap:VirtualizedContainerService.HintSize="987.2,1309.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Add Cast" sap:VirtualizedContainerService.HintSize="547.2,1172.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Add Cast" sap:VirtualizedContainerService.HintSize="547.2,1286.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dt_Cast" />
       </Sequence.Variables>
@@ -112,19 +112,20 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log &quot;Create operation&quot;" sap:VirtualizedContainerService.HintSize="513.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Create operation&quot;]" />
       <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_Cast]" DisplayName="Read range from input.xlsx" sap:VirtualizedContainerService.HintSize="513.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Cast" WorkbookPath="input.xlsx" />
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Cast]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="513.6,795.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Cast]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="513.6,908.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,622.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,736" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="EndPoint" />
                 <Variable x:TypeArguments="x:String" Name="API_Response" />
                 <Variable x:TypeArguments="x:Int32" Name="API_Response_Status" />
                 <Variable x:TypeArguments="x:String" Name="name" />
                 <Variable x:TypeArguments="x:String" Name="nationality" />
+                <Variable x:TypeArguments="x:String" Name="Body" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -161,7 +162,15 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
-              <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="http://localhost:8080/api/v1/casts/" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="6000">
+              <Assign sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[Body]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["{""name"": """+name+""",""nationality"": """+nationality+"""}"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[Body]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="False" EndPoint="http://localhost:8080/api/v1/casts/" sap:VirtualizedContainerService.HintSize="478.4,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[API_Response]" StatusCode="[API_Response_Status]" TimeoutMS="6000">
                 <ui:HttpClient.Attachments>
                   <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                 </ui:HttpClient.Attachments>
